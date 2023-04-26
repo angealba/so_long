@@ -27,10 +27,15 @@ void	*ft_memset(void *b, int c, size_t len)
 
 int	main(int argc, char **argv)
 {
+	t_game	game;
 
 	if (argc != 2)
+	{
+		printf("Error in the number of arguments\n");
 		return (0);
-	ft_memset
-	read_map
+	}
+	check_map(argv[1], ".ber");
+	ft_memset(&game, 0, sizeof(t_game));
+	read_map(&game, argv[1]);
 	check_errors
 }
