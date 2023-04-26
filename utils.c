@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: analbarr <analbarr@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 19:31:22 by analbarr          #+#    #+#             */
-/*   Updated: 2023/04/20 19:31:33 by analbarr         ###   ########.fr       */
+/*   Created: 2023/04/26 19:28:34 by analbarr          #+#    #+#             */
+/*   Updated: 2023/04/26 19:28:42 by analbarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-
-# include <unistd.h>
-# include <stdio.h>
-# include <string.h>
-
-typedef struct s_game
+int	ft_strlen(char *str)
 {
-	int		fd;
-	int		map_height;
-	int		map_widht;
+	int	i;
 
-	char	**map;
-
-	void	*floor;
-	void	*wall;
-	void	*exit;
-	void	*collectable;
-	void	*mlxpointer;
-	void	*winpointer;
-}	t_game;
-
+	i = 0;
+	while(str[i] != '\0')
+		i++;
+	return (i);
+}
