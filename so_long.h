@@ -29,7 +29,6 @@ typedef struct s_game
 	void	*wall;
 	void	*exit;
 	void	*collectable;
-	void	*mlxpointer;
-	void	*winpointer;
+	void	*mlx;
+	void	*win;
 }	t_game;
-
