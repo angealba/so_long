@@ -24,7 +24,7 @@ void	check_rectangle(t_game *game)
 		if (w != game->map_width)
 		{
 			printf("Error: Map lines don't have the same lenght\n");
-			exit_game(game);
+			exit (0);
 		}
 		i++;
 	}
