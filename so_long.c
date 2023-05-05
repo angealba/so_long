@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <mlx.h>
 
 void	*ft_memset(void *b, int c, size_t len)
 {
@@ -39,6 +40,23 @@ void	*ft_memset(void *b, int c, size_t len)
 // 	exit (0);
 // }
 
+// void	init_struct(t_game *game)
+// {
+// 	game->fd = 0;
+// 	game->map_height = 0;
+// 	game->map_width = 0;
+// 	game->p_count = 0;
+// 	game->c_count = 0;
+// 	game->e_count = 0;
+// 	game->map = NULL;
+// 	game->floor = 0;
+// 	game->wall = 0;
+// 	game->exit = 0;
+// 	game->collectables = 0;
+// 	game->mlx = 0;
+// 	game->win = 0;
+// }
+
 int	main(int argc, char **argv)
 {
 	t_game	*game;
@@ -49,13 +67,15 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	game = (t_game *)malloc(sizeof(t_game));
-	check_map_ext(argv[1], ".ber");
+	check_map_ber(argv[1], ".ber");
+	//init_struct(game);
 	ft_memset(game, 0, sizeof(t_game));
 	read_map(game, argv);
-	check_rectangle(game);
-	printf("height: %d\nwidth: %d", game->map_height, game->map_width);
-	// game->mlx = mlx_init();
-	// game->mlx_win = mlx_new_window(game->mlx, 960, 540, "hello");
-	// mlx_loop(game->mlx);
+	check_errors(game);
+	//printf("height: %d\nwidth: %d", game->map_height, game->map_width);
+	printf("mlx: %p\nwin: %p", game->mlx, game->win);
+	game->mlx = mlx_init();
+	game->win = mlx_new_window(game->mlx, 960, 540, "so_long");
+	mlx_loop(game->mlx);
 	return (0);
 }

@@ -18,7 +18,8 @@
 # include <string.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <mlx.h>
+//# include <mlx.h>
+# include <errno.h>
 # include "get_next_line.h"
 
 typedef struct s_game
@@ -26,25 +27,30 @@ typedef struct s_game
 	int		fd;
 	int		map_height;
 	int		map_width;
+	int		c_count;
+	int		e_count;
+	int		p_count;
 
 	char	**map;
 
 	void	*floor;
 	void	*wall;
+	void	*collectables;
+	void	*player;
 	void	*exit;
-	void	*collectable;
 	void	*mlx;
-	void	*mlx_win;
+	void	*win;
 }	t_game;
 
 /*Init*/
 void	*ft_memset(void *b, int c, size_t len);
 
 /*map*/
-void	check_map_ext(char *map, char *ext);
+void	check_map_ber(char *map, char *ext);
 int		get_width(char *str);
 int		read_map(t_game *game, char **argv);
-void	check_rectangle(t_game *game);
+void	valid_char(t_game *game);
+void	check_errors(t_game *game);
 
 /*game*/
 int		exit_game(t_game *game);
