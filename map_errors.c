@@ -62,6 +62,7 @@ void	check_errors(t_game *game)
 {
 	int		hor_wall;
 	int		ver_wall;
+	char	**cpy;
 
 	check_walls_lenght(game);
 	hor_wall = horizontal_wall(game);
@@ -69,8 +70,13 @@ void	check_errors(t_game *game)
 	if (hor_wall == 0 || ver_wall == 0)
 	{
 		printf("Error: Map is not completely closed.\n");
-		exit (1);
+		exit_game(game);
 	}
 	valid_char(game);
 	printf("C: %d\nE: %d\nP: %d\n", game->c_count, game->e_count, game->p_count);
+	cpy = (char **)malloc(sizeof(char *) * (game->map_height + 1));
+	copy_map(cpy, game);
+	check_route(cpy, game);
+
+
 }

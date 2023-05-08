@@ -19,7 +19,7 @@ static void	char_count(t_game *game, int h, int w)
 		game->map[h][w] != 'E' && game->map[h][w] != '\n') 
 	{
 		printf("Error: Unknown map components\n");
-		exit (1);
+		exit_game(game);
 	}
 	if (game->map[h][w] == 'C')
 		game->c_count++;
@@ -48,6 +48,24 @@ void	valid_char(t_game *game)
 	if (!(game->p_count == 1 && game->e_count == 1 && game->c_count >= 1))
 	{
 		printf("Error: Player, exit or collectable number is wrong.\n");
-		exit(1);	
+		exit_game(game);	
 	}
 }
+
+void	copy_map(char **map_tmp, t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < game->map_height)
+		map_tmp[i] = (char *)malloc(sizeof(char) * game->map_width);
+	i = -1;
+	while (++i < game->map_height)
+	{
+		j = -1;
+		while(++j < game->map_width)
+			map_tmp[i][j] = game->map[i][j];
+	}
+}
+

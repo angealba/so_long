@@ -18,7 +18,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <fcntl.h>
-//# include <mlx.h>
+# include <mlx.h>
 # include <errno.h>
 # include "get_next_line.h"
 
@@ -30,6 +30,11 @@ typedef struct s_game
 	int		c_count;
 	int		e_count;
 	int		p_count;
+	int		p_x;
+	int		p_y;
+	int		c_check;
+	int		e_check;
+	int		p_check;
 
 	char	**map;
 
@@ -39,7 +44,7 @@ typedef struct s_game
 	void	*player;
 	void	*exit;
 	void	*mlx;
-	void	*win;
+	void	*mlx_win;
 }	t_game;
 
 /*Init*/

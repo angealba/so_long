@@ -76,7 +76,7 @@ int	read_map(t_game *game, char **argv)
 	if (game->fd < 0)
 	{
 		printf("Error in opening the map\n");
-		exit (0);
+		exit_game(game);
 	}
 	while (1)
 	{
