@@ -35,12 +35,16 @@ typedef struct s_game
 	int		c_check;
 	int		e_check;
 	int		p_check;
+	int		collectables;
+	int		counter;
+	int		x_axis;
+	int		y_axis;
 
 	char	**map;
 
 	void	*floor;
 	void	*wall;
-	void	*collectables;
+	void	*collectable;
 	void	*player;
 	void	*exit;
 	void	*mlx;
@@ -55,9 +59,17 @@ void	check_map_ber(char *map, char *ext);
 int		get_width(char *str);
 int		read_map(t_game *game, char **argv);
 void	valid_char(t_game *game);
+void	copy_map(char **cpy, t_game *game);
 void	check_errors(t_game *game);
+void	check_route(char **map, t_game *game);
 
 /*game*/
 int		exit_game(t_game *game);
 
-# endif
+/*graphics*/
+void	put_images(t_game *game);
+void	add_graphics(t_game *game);
+void	put_player(t_game *game, int img_h, int img_w);
+void	put_collectables(t_game *game, int img_h, int img_w);
+
+#endif

@@ -37,21 +37,23 @@ static int	horizontal_wall(t_game *game)
 	w = 0;
 	while (w < game->map_width)
 	{
-		if (!(game->map[0][w] == '1' && game->map[game->map_height -1][w] == '1'))
-			return (0);	
-		w++;		
+		if (!(game->map[0][w] == '1'
+			&& game->map[game->map_height - 1][w] == '1'))
+			return (0);
+		w++;
 	}
 	return (1);
 }
 
 static int	vertical_wall(t_game *game)
 {
-	int h;
+	int	h;
 
 	h = 0;
 	while (h < game->map_height)
 	{
-		if (!(game->map[h][0] == '1' && game->map[h][game->map_width - 1] == '1'))
+		if (!(game->map[h][0] == '1'
+			&& game->map[h][game->map_width - 1] == '1'))
 			return (0);
 		h++;
 	}
@@ -63,7 +65,9 @@ void	check_errors(t_game *game)
 	int		hor_wall;
 	int		ver_wall;
 	char	**cpy;
+	int		line;
 
+	line = 0;
 	check_walls_lenght(game);
 	hor_wall = horizontal_wall(game);
 	ver_wall = vertical_wall(game);
@@ -74,9 +78,7 @@ void	check_errors(t_game *game)
 	}
 	valid_char(game);
 	printf("C: %d\nE: %d\nP: %d\n", game->c_count, game->e_count, game->p_count);
-	cpy = (char **)malloc(sizeof(char *) * (game->map_height + 1));
+	cpy = (char **)malloc(sizeof(char *) * (game->map_height));
 	copy_map(cpy, game);
 	check_route(cpy, game);
-
-
 }

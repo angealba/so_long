@@ -73,9 +73,12 @@ int	main(int argc, char **argv)
 	read_map(game, argv);
 	check_errors(game);
 	//printf("height: %d\nwidth: %d", game->map_height, game->map_width);
-	printf("mlx: %p\nwin: %p", game->mlx, game->mlx_win);
+	//printf("mlx: %p\nwin: %p", game->mlx, game->mlx_win);
 	game->mlx = mlx_init();
-	game->mlx_win = mlx_new_window(game->mlx, 960, 540, "so_long");
+	game->mlx_win = mlx_new_window(game->mlx, (game->map_width * 70),
+		(game->map_height * 70), "so_long");
+	put_images(game);
+	add_graphics(game);
 	mlx_loop(game->mlx);
-	return (0);
+	system("leaks a.out");
 }
