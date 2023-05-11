@@ -16,17 +16,22 @@ void	put_images(t_game *game)
 {
 	int	img_w;
 	int	img_h;
-	
-	game->floor = mlx_xpm_file_to_image(game->mlx, "textures/grass.xpm", &img_w, &img_h);
-	game->wall = mlx_xpm_file_to_image(game->mlx, "textures/tree.xpm", &img_w, &img_h);
-	game->player = mlx_xpm_file_to_image(game->mlx, "textures/dog.xpm", &img_w, &img_h);
-	game->exit = mlx_xpm_file_to_image(game->mlx, "textures/house.xpm", &img_w, &img_h);
-	game->collectable = mlx_xpm_file_to_image(game->mlx, "textures/bone.xpm", &img_w, &img_h);
+
+	game->floor = mlx_xpm_file_to_image(game->mlx, "textures/grass.xpm",
+			&img_w, &img_h);
+	game->wall = mlx_xpm_file_to_image(game->mlx, "textures/tree.xpm",
+			&img_w, &img_h);
+	game->player = mlx_xpm_file_to_image(game->mlx, "textures/dog.xpm",
+			&img_w, &img_h);
+	game->exit = mlx_xpm_file_to_image(game->mlx, "textures/house.xpm",
+			&img_w, &img_h);
+	game->collectable = mlx_xpm_file_to_image(game->mlx, "textures/bone.xpm",
+			&img_w, &img_h);
 }
 
 void	put_player(t_game *game, int img_h, int img_w)
 {
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->player, 
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->player,
 		img_w * 70, img_h * 70);
 	game->y_axis = img_h;
 	game->x_axis = img_w;
@@ -34,14 +39,14 @@ void	put_player(t_game *game, int img_h, int img_w)
 
 void	put_collectables(t_game *game, int img_h, int img_w)
 {
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->collectable, 
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->collectable,
 		img_w * 70, img_h * 70);
 	game->collectables++;
 }
 
 void	add_graphics(t_game *game)
 {
-	int img_w;
+	int	img_w;
 	int	img_h;
 
 	game->collectables = 0;

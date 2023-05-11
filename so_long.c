@@ -76,7 +76,7 @@ int	main(int argc, char **argv)
 	//printf("mlx: %p\nwin: %p", game->mlx, game->mlx_win);
 	game->mlx = mlx_init();
 	game->mlx_win = mlx_new_window(game->mlx, (game->map_width * 70),
-		(game->map_height * 70), "so_long");
+			(game->map_height * 70), "so_long");
 	put_images(game);
 	add_graphics(game);
 	mlx_loop(game->mlx);
