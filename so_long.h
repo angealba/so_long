@@ -65,7 +65,7 @@ void	check_route(char **map, t_game *game);
 
 /*game*/
 int		exit_game(t_game *game);
-int	controls(int command, t_game *game);
+int		controls(int command, t_game *game);
 
 /*graphics*/
 void	add_images(t_game *game);

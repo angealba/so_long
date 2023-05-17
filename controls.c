@@ -18,7 +18,7 @@ static int	do_move(t_game *game, int y, int x)
 	{
 		if (game->collectables_counter != 0)
 			return (0);
-		printf("Bravo!!! Firulais has found all the treats, he is a happy dog now!\n");
+		printf("Firulais has found all the treats, he is a happy dog now!!\n");
 		exit_game(game);
 	}
 	if (game->map[y][x] == '0')
@@ -105,7 +105,6 @@ int	controls(int command, t_game *game)
 
 	x = game->x_axis;
 	y = game->y_axis;
-
 	if (command == 53)
 		exit_game(game);
 	if (command == 13 || command == 126)

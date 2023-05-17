@@ -84,12 +84,12 @@ int	read_map(t_game *game, char **argv)
 		if (!add_line(game, line))
 			break ;
 	}
-	game->map_width = get_width(game->map[0]);
 	if (game->map_height == 0 && game->map_width == 0)
 	{
 		printf("Error: Empty map\n");
-		return (0);
+		exit_game (game);
 	}
+	game->map_width = get_width(game->map[0]);
 	close (game->fd);
 	return (1);
 }
