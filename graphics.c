@@ -12,24 +12,7 @@
 
 #include "so_long.h"
 
-void	put_images(t_game *game)
-{
-	int	img_w;
-	int	img_h;
-
-	game->floor = mlx_xpm_file_to_image(game->mlx, "textures/grass.xpm",
-			&img_w, &img_h);
-	game->wall = mlx_xpm_file_to_image(game->mlx, "textures/tree.xpm",
-			&img_w, &img_h);
-	game->player = mlx_xpm_file_to_image(game->mlx, "textures/dog.xpm",
-			&img_w, &img_h);
-	game->exit = mlx_xpm_file_to_image(game->mlx, "textures/house.xpm",
-			&img_w, &img_h);
-	game->collectable = mlx_xpm_file_to_image(game->mlx, "textures/bone.xpm",
-			&img_w, &img_h);
-}
-
-void	put_player(t_game *game, int img_h, int img_w)
+static void	put_player(t_game *game, int img_h, int img_w)
 {
 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->player,
 		img_w * 70, img_h * 70);
@@ -37,20 +20,16 @@ void	put_player(t_game *game, int img_h, int img_w)
 	game->x_axis = img_w;
 }
 
-void	put_collectables(t_game *game, int img_h, int img_w)
+static void	put_collectables(t_game *game, int img_h, int img_w)
 {
 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->collectable,
 		img_w * 70, img_h * 70);
-	game->collectables++;
+	game->collectables_counter++;
 }
 
-void	add_graphics(t_game *game)
+void	add_graphics(t_game *game, int img_w, int img_h)
 {
-	int	img_w;
-	int	img_h;
-
-	game->collectables = 0;
-	img_h = 0;
+	game->collectables_counter = 0;
 	while (img_h < game->map_height)
 	{
 		img_w = 0;
@@ -68,10 +47,27 @@ void	add_graphics(t_game *game)
 				mlx_put_image_to_window(game->mlx, game->mlx_win,
 					game->exit, img_w * 70, img_h * 70);
 			if (game->map[img_h][img_w] == 'C')
-				mlx_put_image_to_window(game->mlx, game->mlx_win,
-					game->collectable, img_w * 70, img_h * 70);
+				put_collectables(game, img_h, img_w);
 			img_w++;
 		}
 		img_h++;
 	}
+}
+
+void	add_images(t_game *game)
+{
+	int	img_w;
+	int	img_h;
+
+	game->floor = mlx_xpm_file_to_image(game->mlx, "textures/grass.xpm",
+			&img_w, &img_h);
+	game->wall = mlx_xpm_file_to_image(game->mlx, "textures/tree.xpm",
+			&img_w, &img_h);
+	game->player = mlx_xpm_file_to_image(game->mlx, "textures/dog.xpm",
+			&img_w, &img_h);
+	game->exit = mlx_xpm_file_to_image(game->mlx, "textures/house.xpm",
+			&img_w, &img_h);
+	game->collectable = mlx_xpm_file_to_image(game->mlx, "textures/bone.xpm",
+			&img_w, &img_h);
+	add_graphics(game, 0, 0);
 }

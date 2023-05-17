@@ -72,9 +72,9 @@ void	check_route(char **cpy, t_game *game)
 
 	line = 0;
 	player_pos(cpy, game);
-	printf("p_x = %d, p_y = %d\n", game->p_x, game->p_y);
+	//printf("p_x = %d, p_y = %d\n", game->p_x, game->p_y);
 	route_c(cpy, game, game->p_x, game->p_y);
-	printf("game->c_count = %d, game->c_check = %d\n", game->c_count, game->c_check);
+	//printf("game->c_count = %d, game->c_check = %d\n", game->c_count, game->c_check);
 	if (game->c_check != game->c_count)
 	{
 		printf("No valid route to pick up all collectables");
@@ -84,7 +84,7 @@ void	check_route(char **cpy, t_game *game)
 		free(cpy[line++]);
 	copy_map(cpy, game);
 	route_e(cpy, game, game->p_x, game->p_y);
-	printf("game->e_count = %d, game->e_check = %d\n", game->e_count, game->e_check);
+	//printf("game->e_count = %d, game->e_check = %d\n", game->e_count, game->e_check);
 	line = 0;
 	while (line < game->map_height)
 		free(cpy[line++]);

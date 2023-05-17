@@ -35,8 +35,8 @@ typedef struct s_game
 	int		c_check;
 	int		e_check;
 	int		p_check;
-	int		collectables;
-	int		counter;
+	int		collectables_counter;
+	int		steps_counter;
 	int		x_axis;
 	int		y_axis;
 
@@ -65,11 +65,10 @@ void	check_route(char **map, t_game *game);
 
 /*game*/
 int		exit_game(t_game *game);
+int	controls(int command, t_game *game);
 
 /*graphics*/
-void	put_images(t_game *game);
-void	add_graphics(t_game *game);
-void	put_player(t_game *game, int img_h, int img_w);
-void	put_collectables(t_game *game, int img_h, int img_w);
+void	add_images(t_game *game);
+void	add_graphics(t_game *game, int img_w, int img_h);
 
 #endif
