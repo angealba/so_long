@@ -60,6 +60,6 @@ int	main(int argc, char **argv)
 	add_images(game);
 	mlx_key_hook(game->mlx_win, controls, game);
 	mlx_hook(game->mlx_win, 17, 0, (void *)exit, 0);
+	system("leaks so_long");
 	mlx_loop(game->mlx);
-	system("leaks a.out");
 }

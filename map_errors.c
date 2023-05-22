@@ -77,8 +77,9 @@ void	check_errors(t_game *game)
 		exit_game(game);
 	}
 	valid_char(game);
-	printf("C: %d\nE: %d\nP: %d\n", game->c_count, game->e_count, game->p_count);
 	cpy = (char **)malloc(sizeof(char *) * (game->map_height));
 	copy_map(cpy, game);
 	check_route(cpy, game);
 }
+
+//printf("C: %d\nE: %d\nP: %d\n", game->c_count, game->e_count, game->p_count);
