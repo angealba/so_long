@@ -34,16 +34,22 @@ int	exit_game(t_game *game)
 	if (game->mlx_win)
 		mlx_destroy_window(game->mlx, game->mlx_win);
 	free(game->mlx);
-	while (line < game->map_height - 1)
+	while (line < game->map_height)
 		free(game->map[line++]);
 	free(game->map);
 	exit (0);
+}
+
+void	leaks(void)
+{
+	system("leaks so_long");
 }
 
 int	main(int argc, char **argv)
 {
 	t_game	*game;
 
+	atexit(leaks);
 	if (argc != 2)
 	{
 		printf("Error in the number of arguments\n");
