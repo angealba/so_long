@@ -18,7 +18,7 @@ static int	do_move(t_game *game, int y, int x)
 	{
 		if (game->collectables_counter != 0)
 			return (0);
-		printf("Firulais has found all the treats, he is a happy dog now!!\n");
+		printf("\nFirulais has found all the treats, he is a happy dog now!!\n");
 		exit_game(game);
 	}
 	if (game->map[y][x] == '0')
