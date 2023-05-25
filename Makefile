@@ -6,7 +6,10 @@ BLUE =			\033[0;94m
 MAGENTA =		\033[0;95m
 CYAN =			\033[0;96m
 ORANGE =		\033[38;5;209m
+GRAY =			\033[0;90m
 BROWN =			\033[38;2;184;143;29m
+DARK_GRAY =		\033[38;5;234m
+MID_GRAY =		\033[38;5;245m
 DARK_YELLOW =	\033[38;5;143m
 DARK_GREEN =	\033[38;2;75;179;82m
 
@@ -27,10 +30,10 @@ all: $(NAME)
 
 $(NAME) : $(OBJ) $(INCLUDE)
 		@$(CC) $(SRC) $(LIBRARY) -o $(NAME)
-		@echo "\n$(DARK_GREEN)$(NAME) created ✓$(DEF_COLOR)\n"
+		@echo "\n$(GREEN)$(NAME) created ✓$(DEF_COLOR)\n"
 
 %.o : %.c
-	@echo "$(DARK_YELLOW)Compiling  ${ORANGE}→  $(DARK_GREEN)$< $(DEF_COLOR)"
+	@echo "$(DARK_YELLOW)Compiling  ${DARK_GRAY}→  $(DARK_GRAY)$< $(DEF_COLOR)"
 	@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
